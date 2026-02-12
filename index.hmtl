@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BNKCO Store</title>
+
+<style>
+body{margin:0;background:#0b0b0b;color:#fff;font-family:Arial}
+header{display:flex;justify-content:space-between;padding:18px 28px}
+.brand{font-size:28px;font-weight:900}
+.cartBtn{background:#00d7c5;border:0;padding:10px 18px;border-radius:12px;font-weight:700}
+
+.products{max-width:1200px;margin:auto;padding:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.card{background:#111;border-radius:18px;overflow:hidden;border:1px solid #222}
+.imageBox{height:240px;background:#fff}
+.imageBox img{width:100%;height:100%;object-fit:cover;display:block}
+.info{padding:16px}
+.title{font-size:20px;font-weight:800}
+.price{font-size:18px;margin:8px 0 12px}
+.btnRow{display:flex;gap:10px}
+.btn{flex:1;padding:10px;border-radius:10px;border:none;font-weight:700}
+.details{background:#222;color:#fff}
+.add{background:#00d7c5;color:#000}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="brand">BNKCO</div>
+<button class="cartBtn">Cart (0)</button>
+</header>
+
+<div class="products" id="products"></div>
+
+<script>
+const items = [
+  { name:"Wireless Headphones", price:29.99, img:"1.jpg" },
+  { name:"Smart Watch",         price:49.99, img:"2.jpg" },
+  { name:"Casual T-Shirt",      price:12.99, img:"3.jpg" },
+  { name:"Running Shoes",       price:39.99, img:"4.jpg" },
+  { name:"LED Lamp",            price:19.99, img:"5.jpg" },
+  { name:"Bluetooth Speaker",   price:24.99, img:"6.jpg" },
+  { name:"Backpack",            price:34.99, img:"7.jpg" }
+];
+
+const container = document.getElementById("products");
+
+items.forEach(p=>{
+  const card = document.createElement("div");
+  card.className = "card";
+  card.innerHTML = `
+    <div class="imageBox">
+      <img src="images/${p.img}" alt="${p.name}">
+    </div>
+    <div class="info">
+      <div class="title">${p.name}</div>
+      <div class="price">£${p.price.toFixed(2)}</div>
+      <div class="btnRow">
+        <button class="btn details">Details</button>
+        <button class="btn add">Add to Cart</button>
+      </div>
+    </div>
+  `;
+  container.appendChild(card);
+});
+</script>
+
+</body>
+</html>
